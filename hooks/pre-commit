@@ -1,0 +1,18 @@
+#!/bin/sh
+
+COLOR_OFF="\033[0m"   # unsets color to term fg color
+RED="\033[0;31m"      # red
+GREEN="\033[0;32m"    # green
+YELLOW="\033[0;33m"   # yellow
+
+cd frontend
+jest
+
+if [ ! $? -eq 0 ]; then
+  echo -en "\n${RED}ERROR: jest tests failed${COLOR_OFF}\n"
+  exit 1
+else
+  echo -en "${GREEN}DONE${COLOR_OFF}\n"
+fi
+
+cd ..
